@@ -1,0 +1,217 @@
+mkdir -p /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/cache/icarus
+make -C /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/cache/icarus -f /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/mkdv.mk \
+	MKDV_RUNDIR=/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir \
+	MKDV_CACHEDIR=/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/cache/icarus \
+	build-icarus || (echo "FAIL: exit status $?" > status.txt; exit 1)
+make[1]: Entering directory '/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/cache/icarus'
+make[1]: Nothing to be done for 'build-icarus'.
+make[1]: Leaving directory '/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/cache/icarus'
+INCFILES: /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_ncsim.mk /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_icestorm.mk /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_vcs.mk /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_icarus.mk /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_cocotb.mk /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_vlsim.mk /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_openlane.mk /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_questa.mk /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_quartus.mk /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_sby.mk /project/fun/tblink-rpc/pytblink-rpc-hdl/packages/mkdv/src/mkdv/share/mkfiles/mkdv_pybfms.mk sby questa icestorm vlsim quartus openlane icarus questa icestorm quartus openlane cocotb pybfms
+# Save environment variables for inspection
+if test /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke != /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir; then rm -rf /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir; fi
+mkdir -p /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir
+make -C /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir -f /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/mkdv.mk \
+	MKDV_RUNDIR=/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir \
+	MKDV_CACHEDIR=/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/cache/icarus \
+	pre-run || (echo "FAIL: pre-run failed with exit status $?" > /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir/status.txt; exit 1)
+make[1]: Entering directory '/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir'
+echo "Pre-Run:  "
+Pre-Run:  
+make[1]: Leaving directory '/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir'
+make -C /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir -f /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/mkdv.mk \
+	MKDV_RUNDIR=/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir \
+	MKDV_CACHEDIR=/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/cache/icarus \
+	run-icarus || (echo "FAIL: run failed with exit status $?" > /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir/status.txt; exit 1)
+make[1]: Entering directory '/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir'
+valgrind --tool=memcheck vvp -m /export/fun/tblink-rpc/pytblink-rpc-hdl/build/libpytblink_rpc_hdl.so /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/cache/icarus/simv.vvp +timeout=1000000  -fst +dumpfile=simx.fst
+==1380242== Memcheck, a memory error detector
+==1380242== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1380242== Using Valgrind-3.16.0 and LibVEX; rerun with -h for copyright info
+==1380242== Command: vvp -m /export/fun/tblink-rpc/pytblink-rpc-hdl/build/libpytblink_rpc_hdl.so /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/cache/icarus/simv.vvp +timeout=1000000 -fst +dumpfile=simx.fst
+==1380242== 
+register_tblink_tf
+on_startup
+Test: "/export/fun/tblink-rpc/pytblink-rpc-hdl/packages/python/bin/pypy"
+Test: "/export/fun/tblink-rpc/pytblink-rpc-hdl/packages/python/bin/python3"
+port: 63891
+Connecting to localhost:37881
+reader=<StreamReader t=<_SelectorSocketTransport fd=7 read=polling write=<idle, bufsize=0>>>
+--> starting recv loop
+<-- starting recv loop
+--> Python::build_complete
+==> msgloop
+--> Python: send_req method=tblink.build-complete
+data: {"method" : "tblink.build-complete", "params" : {}, "id" : 0}
+<-- Python: send_req method=tblink.build-complete
+--> Python: wait_rsp 0
+hdr=Content-Length: 
+c=b'7'
+c=b'2'
+c=b'\r'
+c=b'\n'
+size_s=72
+Python: body={"id":0,"json-rpc":"2.0","method":"tblink.build-complete","params":null} len=72
+Python: msg={'id': 0, 'json-rpc': '2.0', 'method': 'tblink.build-complete', 'params': None}
+id=<class 'int'>
+Python: REQ_F: 0 tblink.build-complete
+--> Python: send_rsp id=0
+data: {"id" : 0, "result" : {}}
+<-- Python: send_rsp id=0
+Note: socket 4
+connected
+prv_endpoint: 0x6743550
+end_elab_cb
+--> build_complete
+--> SocketMessageTransport::send
+body="{"id":0,"json-rpc":"2.0","method":"tblink.build-complete","params":null}" len=72
+<-- SocketMessageTransport::send
+--> wait_rsp
+--> poll
+sz=130
+received 130 bytes
+State 1: append 6
+State 1: append 1
+State 1: append 
+header=61
+len=61
+Received message: "{"method" : "tblink.build-complete", "params" : {}, "id" : 0}"
+--> m_req_f
+--> recv_req: tblink.build-complete id=0
+--> SocketMessageTransport::send_rsp
+hdr=Content-Length: 
+c=b'3'
+c=b'9'
+c=b'\r'
+c=b'\n'
+size_s=39
+body="{"id":0,"json-rpc":"2.0","result":null}" len=39
+<-- SocketMessageTransport::send_rsp
+<-- recv_req: tblink.build-complete
+<-- m_req_f
+State 1: append 2
+State 1: append 5
+State 1: append 
+header=25
+len=25
+Received message: "{"id" : 0, "result" : {}}"
+--> m_rsp_f
+--> recv_rsp
+<-- recv_rsp
+<-- m_rsp_f
+sz=-1
+sz=-1 errno=11
+return ret=0
+<-- poll 0
+<-- wait_rsp
+<-- build_complete
+--> connect_complete
+--> SocketMessageTransport::send
+body="{"id":1,"json-rpc":"2.0","method":"tblink.connect-complete","params":null}" len=74
+<-- SocketMessageTransport::send
+--> wait_rsp
+Python: body={"id":0,"json-rpc":"2.0","result":null} len=39
+Python: msg={'id': 0, 'json-rpc': '2.0', 'result': None}
+--> Python: _rsp_f 0
+<-- Python: _rsp_f 0
+hdr=Content-Length: 
+c=b'7'
+c=b'4'
+c=b'\r'
+c=b'\n'
+size_s=74
+Python: body={"id":1,"json-rpc":"2.0","method":"tblink.connect-complete","params":null} len=74
+Python: msg={'id': 1, 'json-rpc': '2.0', 'method': 'tblink.connect-complete', 'params': None}
+id=<class 'int'>
+Python: REQ_F: 1 tblink.connect-complete
+--> Python: send_rsp id=1
+data: {"id" : 1, "result" : {}}
+<-- Python: send_rsp id=1
+<-- Python: wait_rsp 0
+result,error=<tblink_rpc_core.param_val_map.ParamValMap object at 0x7f97be100780>,None
+<-- Python::build_complete
+--> Python::connect_complete
+--> Python: send_req method=tblink.connect-complete
+data: {"method" : "tblink.connect-complete", "params" : {}, "id" : 1}
+<-- Python: send_req method=tblink.connect-complete
+--> Python: wait_rsp 1
+--> poll
+sz=47
+received 47 bytes
+State 1: append 2
+State 1: append 5
+State 1: append 
+header=25
+len=25
+Received message: "{"id" : 1, "result" : {}}"
+--> m_rsp_f
+--> recv_rsp
+<-- recv_rsp
+<-- m_rsp_f
+sz=85
+received 85 bytes
+State 1: append 6
+State 1: append 3
+State 1: append 
+header=63
+len=63
+Received message: "{"method" : "tblink.connect-complete", "params" : {}, "id" : 1}"
+--> m_req_f
+--> recv_req: tblink.connect-complete id=1
+--> SocketMessageTransport::send_rsp
+body="{"id":1,"json-rpc":"2.0","result":null}" len=39
+<-- SocketMessageTransport::send_rsp
+hdr=Content-Length: 
+c=b'3'
+c=b'9'
+c=b'\r'
+c=b'\n'
+size_s=39
+<-- recv_req: tblink.connect-complete
+<-- m_req_f
+sz=-1
+sz=-1 errno=11
+return ret=0
+<-- poll 0
+<-- wait_rsp
+Python: body={"id":1,"json-rpc":"2.0","result":null} len=39
+Python: msg={'id': 1, 'json-rpc': '2.0', 'result': None}
+--> Python: _rsp_f 1
+<-- Python: _rsp_f 1
+<-- Python: wait_rsp 1
+<-- Python::connect_complete
+--> Python: send_req method=tblink.add-time-callback
+data: {"method" : "tblink.add-time-callback", "params" : {"time" : 10}, "id" : 2}
+<-- Python: send_req method=tblink.add-time-callback
+--> Python: wait_rsp 2
+<-- connect_complete
+1000000: Timeout
+on_shutdown
+==1380242== 
+==1380242== HEAP SUMMARY:
+==1380242==     in use at exit: 1,149,448 bytes in 434 blocks
+==1380242==   total heap usage: 101,041 allocs, 100,607 frees, 2,438,521 bytes allocated
+==1380242== 
+==1380242== LEAK SUMMARY:
+==1380242==    definitely lost: 196 bytes in 4 blocks
+==1380242==    indirectly lost: 1,072 bytes in 3 blocks
+==1380242==      possibly lost: 0 bytes in 0 blocks
+==1380242==    still reachable: 1,148,180 bytes in 427 blocks
+==1380242==                       of which reachable via heuristic:
+==1380242==                         newarray           : 1,048,552 bytes in 1 blocks
+==1380242==         suppressed: 0 bytes in 0 blocks
+==1380242== Rerun with --leak-check=full to see details of leaked memory
+==1380242== 
+==1380242== For lists of detected and suppressed errors, rerun with: -s
+==1380242== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Disconnect(1)
+<== msgloop
+make[1]: Leaving directory '/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir'
+make -C /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir -f /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/mkdv.mk \
+	MKDV_RUNDIR=/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir \
+	MKDV_CACHEDIR=/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/cache/icarus \
+	post-run || (echo "FAIL: post-run failed with exit status $?" > /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir/status.txt; exit 1)
+make[1]: Entering directory '/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir'
+echo "Post-Run: "
+Post-Run: 
+make[1]: Leaving directory '/export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir'
+echo "PASS: " > /export/fun/tblink-rpc/pytblink-rpc-hdl/tests/smoke/rundir/status.txt

@@ -1,0 +1,15 @@
+
+package:
+    name: pytblink-rpc-hdl
+    version: 0.0.1
+
+    dev-deps:
+        - name: tblink-rpc-core
+          url:  https://github.com/tblink-rpc/tblink-rpc-core.git
+        - name: tblink-rpc-hdl
+          url:  https://github.com/tblink-rpc/tblink-rpc-hdl.git
+        - name: pytblink-rpc
+          url:  https://github.com/tblink-rpc/pytblink-rpc.git
+        - name: mkdv
+          url:  https://github.com/fvutils/mkdv.git
+
