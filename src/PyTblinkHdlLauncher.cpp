@@ -173,7 +173,7 @@ IEndpoint *PyTblinkHdlLauncher::launch(
    fcntl(conn_socket, F_SETFL, (flags | O_NONBLOCK));
 #endif
 
-    ITransport *transport = factory->mkSocketTransport(conn_socket);
+    ITransport *transport = factory->mkSocketTransport(pid, conn_socket);
     IEndpoint *endpoint = factory->mkJsonRpcEndpoint(
     		transport,
 			services);
