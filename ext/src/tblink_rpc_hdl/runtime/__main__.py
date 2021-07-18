@@ -9,6 +9,7 @@ import asyncio
 from tblink_rpc_core.json.json_transport import JsonTransport
 from tblink_rpc_core.endpoint import Endpoint
 import sys
+from tblink.impl.endpoint_rgy import EndpointRgy
 
 def getparser():
     parser = argparse.ArgumentParser()
@@ -35,6 +36,8 @@ def main():
     # TODO: endpoint needs to have services
     transport = JsonTransport(reader, writer)
     endpoint = Endpoint(transport)
+    
+    EndpointRgy.inst().add_endpoint(endpoint)
 
     # Start the run loop for the transport
     print("--> starting recv loop")

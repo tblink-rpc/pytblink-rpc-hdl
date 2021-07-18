@@ -60,10 +60,10 @@ file(GLOB pytblink_rpc_hdl_SRC
  
 add_library(pytblink_rpc_hdl SHARED ${pytblink_rpc_hdl_SRC})
 
-#add_dependencies(pytblink_rpc_hdl 
-#	tblink-rpc-core
-#	tblink-rpc-hdl
-#	)
+add_dependencies(pytblink_rpc_hdl 
+	tblink_rpc_core
+	tblink_rpc_hdl
+	)
 
 target_include_directories(pytblink_rpc_hdl PRIVATE
 	${PACKAGES_DIR}/tblink-rpc-core/cpp/include

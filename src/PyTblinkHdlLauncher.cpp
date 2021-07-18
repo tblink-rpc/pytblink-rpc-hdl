@@ -17,6 +17,7 @@
 #include <sys/wait.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 static const char PS = ':';
@@ -173,10 +174,23 @@ IEndpoint *PyTblinkHdlLauncher::launch(
    fcntl(conn_socket, F_SETFL, (flags | O_NONBLOCK));
 #endif
 
-    ITransport *transport = factory->mkSocketTransport(pid, conn_socket);
-    IEndpoint *endpoint = factory->mkJsonRpcEndpoint(
-    		transport,
-			services);
+
+   {
+	   int flag = 1;
+
+	   ::setsockopt(
+			   conn_socket,
+			   IPPROTO_TCP,
+			   TCP_NODELAY,
+			   (char *)&flag,
+			   sizeof(int));
+
+   }
+
+   ITransport *transport = factory->mkSocketTransport(pid, conn_socket);
+   IEndpoint *endpoint = factory->mkJsonRpcEndpoint(
+		   transport,
+		   	  services);
 
     fprintf(stdout, "connected\n");
 
